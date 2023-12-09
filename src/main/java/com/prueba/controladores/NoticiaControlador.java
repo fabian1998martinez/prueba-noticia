@@ -3,6 +3,7 @@ package com.prueba.controladores;
 
 import com.prueba.Excepcion.MyExcepcion;
 import com.prueba.entidades.Noticia;
+import com.prueba.entidades.Usuario;
 import com.prueba.servicios.NoticiaServicios;
 import java.util.List;
 import java.util.logging.Level;
@@ -14,6 +15,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -63,6 +65,13 @@ public class NoticiaControlador {
         modelo.addAttribute("lista", lista);
         return "Listados.html";
     }
+     @GetMapping("/listaAutores")
+    public String ListarAutores(ModelMap modelo){
+    
+        List<Usuario> listaAutores = noticiaServicio.listaAutores();
+        modelo.addAttribute("listaAutores", listaAutores);
+        return "listaAutores.html";
+    }
     
     @GetMapping("/modificar/{id}")
     public String modificar(@PathVariable String id,ModelMap modelo){
@@ -72,14 +81,14 @@ public class NoticiaControlador {
         return "noticia_actualizar.html";
     }
 
-    @PostMapping("/modificar/{id}")
+    @PostMapping("/modificando/{id}")
     public String modificar(@PathVariable String id,
-            @RequestParam String titulo,
-            @RequestParam String cuerpo,
+           @RequestParam(required=false) String titulo,
+           @RequestParam(required=false) String cuerpo,
             ModelMap modelo) {
 
         try {
-            noticiaServicio.modificarNoticia(id, titulo, cuerpo);
+            noticiaServicio.modificarNoticia(id,titulo,cuerpo);
             return "redirect:../lista";
         } catch (MyExcepcion ex) {
             Logger.getLogger(NoticiaControlador.class.getName()).log(Level.SEVERE, null, ex);

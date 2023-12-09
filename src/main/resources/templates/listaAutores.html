@@ -10,24 +10,23 @@
             <table class="table table-dark">
                 <thead>
                     <tr>
-                        <th scope="col">Id de la noticia</th>
-                        <th scope="col">Titulo de la noticia</th>
-                        <th scope="col">Cuerpo de la noticia</th>
+                        <th scope="col">Id del autor</th>
+                        <th scope="col">Nombre del autor</th>
+                        <th scope="col">Email del autor</th>
                         <th scope="col" sec:authorize='hasRole("ADMIN")' >Modificar</th>
                     </tr>
                 </thead>
-                <tbody th:each=" noticia : ${lista}" >
+                <tbody th:each=" autor : ${listaAutores}" >
                     <tr>
-                        <th scope="row" th:text="${noticia.id}"></th>
-                        <th  th:text="${noticia.titulo}"></th>
-                        <td th:text="${noticia.cuerpo}"></td>
+                        <th scope="row" th:text="${autor.id}"></th>
+                        <th  th:text="${autor.nombre}"></th>
+                        <td th:text="${autor.email}"></td>
                         <td >
-                            <a   sec:authorize='hasRole("ADMIN")'  th:href="@{/Noticia/modificar/__${noticia.id}__}">Modificar</a>
+                            <a   sec:authorize='hasRole("ADMIN")'  th:href="@{/Noticia/modificar/__${autor.id}__}">Modificar</a>
                         </td>
                     </tr>
                 </tbody>
             </table>
-             <!-- Botón centrado debajo de la tabla -->
              <div class="text-center">
                  <a href="../inicio" class="btn btn-primary">Volver atrás</a>
              </div>

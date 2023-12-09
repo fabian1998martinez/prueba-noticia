@@ -10,12 +10,13 @@
     <body>
         <div class="container-fluid m-5 contenedor" >
               
-            <form class="formulario" th:action="@{/Noticia/modificar/${id}}" method="POST" >
+            <form class="formulario" th:action="@{/Noticia/modificando/${id}}" method="POST" >
                 
                 
                 <div>
                     <label class="mb-2">Cargar Noticia</label>
-                    <input th:value="@{noticia.titulo}" type="text"  class="form-control" name="titulo"  >
+                    <input  type="text"  class="form-control" name="titulo"  >
+                    <input  type="text"  class="form-control" name="cuerpo"  >
                 </div>
                 <button type="submit" class="btn btn-primary mt-3 botones" >Actualizar</button>
             </form>

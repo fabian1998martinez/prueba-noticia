@@ -3,7 +3,9 @@ package com.prueba.servicios;
 
 import com.prueba.Excepcion.MyExcepcion;
 import com.prueba.entidades.Noticia;
+import com.prueba.entidades.Usuario;
 import com.prueba.repositorios.NoticiaRepositorio;
+import com.prueba.repositorios.UsuarioRepositorio;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -16,6 +18,9 @@ public class NoticiaServicios {
     
     @Autowired
     private NoticiaRepositorio noticiaRepositorio;
+    
+     @Autowired
+    private UsuarioRepositorio usuarioRepositorio;
     
     @Transactional
     public void crearNoticia(String titulo,String cuerpo) throws MyExcepcion{
@@ -74,6 +79,15 @@ public class NoticiaServicios {
      listaDeNoticia = noticiaRepositorio.findAll();
      
      return listaDeNoticia;
+     
+}
+      public List<Usuario> listaAutores(){
+   
+     List<Usuario> listaAutores = new ArrayList();
+           
+     listaAutores= usuarioRepositorio.findAll();
+     
+     return listaAutores;
      
 }
 }

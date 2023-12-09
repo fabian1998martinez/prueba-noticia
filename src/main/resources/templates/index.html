@@ -1,26 +1,68 @@
 <!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
 <html xmlns:th="http://www.thymeleaf.org">
-    <head>
-        <title>esta es mi pagina</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-
+    
+    
+    <head th:replace="/fragments/head :: head">      
+    
     </head>
-    <body>
-        <div>Este es un index</div>
-         <div th:if="${exito != null}" class="card text-white  bg-success  mb-3 mensajeExito">
-        <div class="card-body">
-            <h5 class="card-title ">Exito !!!</h5>
-            <p class="card-text" th:text="${exito}"></p>
+
+<body class="d-flex flex-column min-vh-100">
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg bg-success bg-opacity-75">
+        <div class="container-fluid">
+            <!-- Brand -->
+            <a class="navbar-brand" href="/">
+                Biblioteca EGG
+            </a>
+
+            <!-- Botón para colapsar en pantallas pequeñas -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/login">Ingresar</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/registrar">Registrarse</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+  <!-- Sección principal -->
+    <div class="container-fluid flex-grow-1 d-flex flex-column align-items-center justify-content-center ">
+        <div class="row">
+            <!-- Lado izquierdo -->
+            <div class="col-md-7">
+                <header class="header">
+                    <div class="title">
+                        <a class="navbar-brand">
+                           <h2 class="mx-5 mt-3 custom-title">Biblioteca EGG</h2>
+                        </a>
+                    </div>
+                </header>
+            </div>
+            
+            <!-- Lado derecho -->
+            <div class="col-md-5">
+                <!-- Descripción -->
+                <div class="description">
+                    <h2>¡Descubre lo último en la Biblioteca EGG!</h2>
+                    <p>Explora nuestras últimas noticias, eventos y recursos para amantes de la lectura.</p>
+                </div>
+            </div>
         </div>
     </div>
-     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 
-    </body>
+
+    <!-- Pie de página -->
+  <footer th:replace="/fragments/fooder :: footer"></footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+</body>
 </html>
+
